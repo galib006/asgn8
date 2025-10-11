@@ -14,7 +14,7 @@ function Card({ index, data }) {
   return (
     <div>
       <div className="card bg-base-100  shadow-sm p-4">
-        <figure className="px-10 pt-10 bg-[#D9D9D9]">
+        <figure className="px-10 pt-10 bg-[#D9D9D9] rounded-2xl">
           <img
             src={data.image}
             alt="Shoes"
@@ -23,17 +23,13 @@ function Card({ index, data }) {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{data.title}</h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
           <div className="card-actions">
-            <div className="flex justify-between w-full">
-              <div className="flex items-center gap-1">
+            <div className="flex justify-between w-full text-base mt-3">
+              <div className="flex items-center gap-1 text-[#00D390] bg-[#F1F5E8] py-1.5 px-2 rounded-sm">
                 <MdOutlineFileDownload />
                 <p>{formatNumber(data.downloads)}</p>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 text-[#FF8811] bg-[#FFF0E1] py-1.5 px-2 rounded-sm">
                 <FaStar />
                 <p>{data.ratingAvg}</p>
               </div>
