@@ -11,30 +11,33 @@ import Installation from "./Pages/Installation.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Navbar></Navbar>
-        <Home></Home>
-      </>
-    ),
-  },
-  {
-    path: "/Apps",
-    element: (
-      <>
-        <Navbar></Navbar>
-        <Apps></Apps>
-      </>
-    ),
-  },
-  {
-    path: "/Installation",
-    element: (
-      <>
-        <Navbar></Navbar>
-        <Installation></Installation>
-      </>
-    ),
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <>
+            <Home></Home>
+          </>
+        ),
+      },
+      {
+        path: "/Apps",
+        element: (
+          <>
+            <Apps></Apps>
+          </>
+        ),
+      },
+      {
+        path: "/Installation",
+        element: (
+          <>
+            <Installation></Installation>
+          </>
+        ),
+      },
+    ],
   },
 ]);
 
