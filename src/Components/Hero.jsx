@@ -1,6 +1,12 @@
-import React from "react";
+import React, { createContext, useState } from "react";
+import LinkBtn from "./Utilities/LinkBtn";
+import playstore from "./../assets/playstore.svg";
+import Appstore from "./../assets/App_Store.png";
+import Heroimg from "./../assets/hero.png"
+
 
 function Hero() {
+
   return (
     <>
       <div className="bg-[#f5f5f5] pt-20">
@@ -17,9 +23,16 @@ function Hero() {
             into digital experiences that truly make an impact.
           </p>
         </div>
+        <div className="flex justify-center gap-3 my-10">
+     
+          <LinkBtn title={'Google Play'} img={playstore}></LinkBtn>
+          <LinkBtn title={'App Store'} img={Appstore}></LinkBtn>
+        </div>
+        <div className="flex justify-center">
+          <img src={Heroimg} alt="" className="w-4/5 lg:w-auto"/>
+        </div>
       </div>
     </>
   );
 }
-
 export default Hero;
