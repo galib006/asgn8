@@ -8,6 +8,7 @@ import Home from "./Pages/Home.jsx";
 import Navbar from "./Components/Navbar.jsx";
 import Apps from "./Pages/Apps.jsx";
 import Installation from "./Pages/Installation.jsx";
+import ApiContext from "./Components/Utilities/ApiContext.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +44,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <ApiContext>
     <RouterProvider router={router} />
+    </ApiContext>
   </StrictMode>
 );

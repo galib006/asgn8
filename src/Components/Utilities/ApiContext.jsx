@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-const AppContext = createContext();
+export const AppContext = createContext();
 
-export function AppProvider({ children }) {
-  const [AppsContext, setAppsContext] = useState([]);
+export function ApiContext({children}) {
+  const [appsContext,setAppsContext] = useState([]);
   useEffect(() => {
     axios
       .get("apps.json")
@@ -14,14 +14,12 @@ export function AppProvider({ children }) {
         console.log(err);
       });
   }, []);
+
   return (
-    <AppContext.Provider value={{ AppsContext, setAppsContext }}>
+    <AppContext.Provider value={{appsContext}}>
       {children}
     </AppContext.Provider>
   );
-}
-function ApiContext() {
-  return <div></div>;
 }
 
 export default ApiContext;
