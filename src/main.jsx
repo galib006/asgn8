@@ -9,6 +9,7 @@ import Navbar from "./Components/Navbar.jsx";
 import Apps from "./Pages/Apps.jsx";
 import Installation from "./Pages/Installation.jsx";
 import ApiContext from "./Components/Utilities/ApiContext.jsx";
+import SingleApps from "./Components/SingleApps.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,15 @@ const router = createBrowserRouter([
           </>
         ),
       },
+      {
+        path: "/apps/:id",
+        loader: () => fetch("/public/apps.json"),
+        element: (
+          <>
+            <SingleApps></SingleApps>
+          </>
+        ),
+      },
     ],
   },
 ]);
@@ -45,7 +55,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ApiContext>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </ApiContext>
   </StrictMode>
 );
