@@ -22,19 +22,20 @@ function SingleApps() {
 
   return (
     <div>
-      <div className="grid grid-cols-2">
-        <div>
-          <img src={data.image} alt="" />
+      <div className="grid grid-cols-4 mx-20 items-center">
+        <div className="col-span-1">
+          <img className="w-[350px]" src={data.image} alt="" />
         </div>
-        <div>
+        <div className="col-span-3">
           <h3 className="font-bold text-3xl">{data.title}</h3>
-          <p className="text-xl text[#627382}">
+          <p className="text-xl text-[#627382] mt-2">
             Developed by{" "}
             <span className="font-bold  bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">
               {data.companyName}
             </span>
           </p>
-          <div className="flex gap-12">
+          <div className="divider"></div>
+          <div className="flex gap-18">
             <SingleAbout
               icon={image1}
               title={"Downloads"}
@@ -50,6 +51,11 @@ function SingleApps() {
               title={"Total Reviews"}
               qty={formatNumber(data.reviews)}
             ></SingleAbout>
+          </div>
+          <button className="btn btn-success text-white mt-7">Install Now ({data.size} MB)</button>
+          <div className="divider"></div>
+          <div>
+            <h4 className="font-semibold text-2xl text-[#001931]">Ratings</h4>
           </div>
         </div>
       </div>
