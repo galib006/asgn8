@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import SingleAbout from "./Utilities/SingleAbout";
 import image1 from "../assets/icon-downloads.png";
@@ -35,7 +35,20 @@ function SingleApps() {
   const sortedRatings = ratingOrder
     .map((name) => data.ratings.find((r) => r.name === name))
     .filter(Boolean);
-
+    const [items,setitems] = useState(() =>{
+      const saved = localStorage.getItem("Apps");
+      return saved ? JSON.parse(saved) : [];
+    });
+    useEffect(()=>{
+  localStorage.setItem('Apps',JSON.stringify(items));
+},[items]);
+    const btnClick = () =>{
+      if (!items.includes(data.id)) {
+    setitems([...items, data.id]);
+}else{
+  alert("Already item Added.");
+}
+    }
   return (
     <div>
       <div className="grid grid-cols-4 mx-20 items-center">
@@ -68,7 +81,7 @@ function SingleApps() {
               qty={formatNumber(data.reviews)}
             ></SingleAbout>
           </div>
-          <button className="btn btn-success text-white mt-7">
+          <button className="btn btn-success text-white mt-7" onClick={()=>{btnClick()}}>
             Install Now ({data.size} MB)
           </button>
         </div>
