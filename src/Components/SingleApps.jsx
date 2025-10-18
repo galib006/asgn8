@@ -37,31 +37,30 @@ function SingleApps() {
   const sortedRatings = ratingOrder
     .map((name) => data.ratings.find((r) => r.name === name))
     .filter(Boolean);
-    const [items,setitems] = useState(() =>{
-      const saved = localStorage.getItem("Apps");
-      return saved ? JSON.parse(saved) : [];
-    });
-    useEffect(()=>{
-  localStorage.setItem('Apps',JSON.stringify(items));
-},[items]);
-    const btnClick = () =>{
-      if (!items.includes(data.id)) {
-    setitems([...items, data.id]);
-    toast.success("App Insstalled Successfull!");
-}else{
-  toast.error("Alerady Add",{
-  style: {
-    border: "#dc2626", 
-    color: "#000",
-    fontWeight: "600",
-  },
-});
-  
-}
+  const [items, setitems] = useState(() => {
+    const saved = localStorage.getItem("Apps");
+    return saved ? JSON.parse(saved) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("Apps", JSON.stringify(items));
+  }, [items]);
+  const btnClick = () => {
+    if (!items.includes(data.id)) {
+      setitems([...items, data.id]);
+      toast.success("App Insstalled Successfull!");
+    } else {
+      toast.error("Alerady Add", {
+        style: {
+          border: "#dc2626",
+          color: "#000",
+          fontWeight: "600",
+        },
+      });
     }
+  };
   return (
     <div>
-      <div className="grid grid-cols-4 mx-20 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-4 mx-6 lg:mx-20 items-center">
         <div className="col-span-1">
           <img className="w-[350px]" src={data.image} alt="" />
         </div>
@@ -91,26 +90,31 @@ function SingleApps() {
               qty={formatNumber(data.reviews)}
             ></SingleAbout>
           </div>
-          <button className="btn btn-success text-white mt-7" onClick={()=>{btnClick()}}>
+          <button
+            className="btn btn-success text-white mt-7"
+            onClick={() => {
+              btnClick();
+            }}
+          >
             Install Now ({data.size} MB)
           </button>
           <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-          transition={Bounce}
-        />
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}
+          />
         </div>
       </div>
 
-      <div className="mx-20">
+      <div className="mx-6 lg:mx-20">
         <div className="divider"></div>
         <h4 className="font-semibold text-2xl text-[#001931]">Ratings</h4>
         <ResponsiveContainer width="100%" height={300}>
@@ -139,7 +143,7 @@ function SingleApps() {
         </ResponsiveContainer>
         <div className="divider"></div>
       </div>
-      <div className="mx-20 mb-10">
+      <div className="mx-6 lg:mx-20 mb-10">
         <h4 className="font-semibold text-2xl text-[#001931]">Description</h4>
         <div className="text-[#627382] text-xl mt-6">{data.description}</div>
       </div>

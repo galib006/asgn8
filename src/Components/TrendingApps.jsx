@@ -9,19 +9,19 @@ import React, {
 import Ftitle from "./Utilities/Ftitle";
 import Card from "./Utilities/Card";
 import { NavLink } from "react-router-dom";
-import {AppContext} from "./Utilities/ApiContext"
+import { AppContext } from "./Utilities/ApiContext";
 
 function TrendingApps() {
-const {appsContext} = useContext(AppContext);
+  const { appsContext } = useContext(AppContext);
 
   return (
     <div className="bg-[#f5f5f5]">
-      <div className="py-20 mx-20">
+      <div className="py-20 mx-5 lg:mx-20">
         <Ftitle
           title={"Trending Apps"}
           content={"Explore All Trending Apps on the Market developed by us"}
         ></Ftitle>
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {appsContext.slice(0, 8).map((data, index) => (
             <Card key={index} data={data}></Card>
           ))}

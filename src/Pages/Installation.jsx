@@ -49,14 +49,16 @@ function Installation() {
 
   return (
     <div className="bg-[#f5f5f5] min-h-screen">
-      <div className="p-20">
+      <div className="p-5 lg:p-20">
         <Ftitle
           title={"Your Installed Apps"}
           content={"Explore All Trending Apps on the Market developed by us"}
         />
         <div className="flex justify-between items-center mb-5">
           <p className="font-semibold text-2xl">
-            {Install.length === 0 ? "No Apps Found" : `${Install.length} Apps Found`}
+            {Install.length === 0
+              ? "No Apps Found"
+              : `${Install.length} Apps Found`}
           </p>
 
           <div className="dropdown dropdown-end">
@@ -81,12 +83,14 @@ function Installation() {
           {Install.map((data, index) => (
             <div
               key={index}
-              className="flex justify-between items-center p-5 bg-white rounded-xl shadow-sm"
+              className="grid grid-cols-1 lg:flex justify-between items-center p-5 bg-white rounded-xl shadow-sm"
             >
               <div className="flex items-center gap-6">
                 <img src={data.image} alt={data.title} className="w-20 h-20" />
                 <div>
-                  <h4 className="text-xl font-semibold text-[#001931]">{data.title}</h4>
+                  <h4 className="text-xl font-semibold text-[#001931]">
+                    {data.title}
+                  </h4>
                   <div className="flex gap-3 mt-3">
                     <SingleAbout
                       className="flex items-center"
@@ -112,7 +116,7 @@ function Installation() {
               </div>
 
               <button
-                className="btn btn-success text-white"
+                className="btn btn-success text-white mt-5 lg:mt-0"
                 onClick={() => BtnUninstall(data.id)}
               >
                 Uninstall
