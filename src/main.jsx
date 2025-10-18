@@ -10,13 +10,15 @@ import Apps from "./Pages/Apps.jsx";
 import Installation from "./Pages/Installation.jsx";
 import ApiContext from "./Components/Utilities/ApiContext.jsx";
 import SingleApps from "./Components/SingleApps.jsx";
+import Error404 from "./Pages/Error404.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error404 />,
     children: [
       {
-        path: "/",
+        index: true,
         element: (
           <>
             <Home></Home>
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
             <SingleApps></SingleApps>
           </>
         ),
+      },
+      {
+        path: "*",
+        element: <Error404></Error404>,
       },
     ],
   },

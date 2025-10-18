@@ -4,6 +4,8 @@ import SingleAbout from "./Utilities/SingleAbout";
 import image1 from "../assets/icon-downloads.png";
 import image3 from "../assets/icon-ratings.png";
 import image2 from "../assets/icon-review.png";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   BarChart,
   Bar,
@@ -45,8 +47,16 @@ function SingleApps() {
     const btnClick = () =>{
       if (!items.includes(data.id)) {
     setitems([...items, data.id]);
+    toast.success("App Insstalled Successfull!");
 }else{
-  alert("Already item Added.");
+  toast.error("Alerady Add",{
+  style: {
+    border: "#dc2626", 
+    color: "#000",
+    fontWeight: "600",
+  },
+});
+  
 }
     }
   return (
@@ -84,6 +94,19 @@ function SingleApps() {
           <button className="btn btn-success text-white mt-7" onClick={()=>{btnClick()}}>
             Install Now ({data.size} MB)
           </button>
+          <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
         </div>
       </div>
 

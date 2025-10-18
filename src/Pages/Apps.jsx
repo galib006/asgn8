@@ -1,10 +1,17 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../Components/Utilities/ApiContext'
-import Card from '../Components/Utilities/Card'
+import React, { useContext, useState } from 'react';
+import { AppContext } from '../Components/Utilities/ApiContext';
+import Card from '../Components/Utilities/Card';
 import Ftitle from '../Components/Utilities/Ftitle';
+
 
 function Apps() {
   const {appsContext} = useContext(AppContext);
+   const [searchTerm, setSearchTerm] = useState(""); 
+
+
+  const filteredApps = appsContext.filter((app) =>
+    app.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   
   return (
     <div className='bg-[#f5f5f5]'>
@@ -29,16 +36,20 @@ function Apps() {
       <path d="m21 21-4.3-4.3"></path>
     </g>
   </svg>
-  <input type="search" required placeholder="search Apps" />
+ <input
+              type="search"
+              placeholder="Search Apps"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} 
+              className="outline-none w-full py-1"
+            />
 </label></div>
       </div >
      <div className="grid grid-cols-4 mx-20 gap-4">
-       {
-        appsContext.map((data,index)=>(
-          <Card key={index} data={data}></Card>
-        ))
-      }
-     </div>
+        {filteredApps.map((data, index) => (
+          <Card key={index} data={data} />
+        ))}
+        </div>
       
     </div>
   )
