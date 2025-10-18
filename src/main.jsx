@@ -43,12 +43,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/apps/:id",
-        loader: () => fetch("/public/apps.json"),
-        element: (
-          <>
-            <SingleApps></SingleApps>
-          </>
-        ),
+        loader: () => fetch("/apps.json"),
+        element: <SingleApps />,
       },
       {
         path: "*",
